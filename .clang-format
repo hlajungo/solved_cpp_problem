@@ -1,0 +1,34 @@
+BasedOnStyle: GNU
+IndentWidth: 2 # 縮排兩空格
+UseTab: Never  # 永遠不用 Tab
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterControlStatement: true
+  AfterFunction: true
+  AfterEnum: true
+  AfterStruct: true
+  AfterNamespace: true
+  IndentBraces: false
+ColumnLimit: 80  # 最長行
+
+BinPackParameters: false  # 所有 參數 不擠一行
+BinPackArguments: false  # 所有 呼叫 不擠一行
+
+
+#AlignAfterOpenBracket: Align  # 多行對齊
+
+
+
+  #SpacesInAngles: true  # <> 之間空格
+  ##AllowAllParametersOfDeclarationOnNextLine: true # 函數參數 每個一行
+  ##AllowAllArgumentsOnNextLine: true # 函數呼叫 每個一行
+  ##BinPackParameters: false  # 所有 參數 不擠一行
+  ##BinPackArguments: false  # 所有 呼叫 不幾一行
+  ##AlwaysBreakAfterReturnType: None  # 返回值 不換行
+  ##AlwaysBreakTemplateDeclarations: Yes # 模板 換行
+  #SpaceBeforeAssignmentOperators: true # = 左右有空格
+  ##Cpp11BracedListStyle: true # C++11 {} 初始化
+  #SortIncludes: false # 不自動重排 include
+  #SpaceBeforeParens: Always  # 函數或關鍵字後面有空格
+  #
+  #AllowShortFunctionsOnASingleLine: false

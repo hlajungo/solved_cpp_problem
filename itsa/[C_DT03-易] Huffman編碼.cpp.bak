@@ -1,0 +1,190 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define EL endl
+
+  template <typename T1, typename T2>
+void print_unordered_map (const unordered_map <T1, T2>& um )
+{
+  for(auto it = um.cbegin(); it != um.cend(); ++it)
+  {
+    std::cout << (char)it->first << " " << it->second << "\n";
+  }
+}
+
+  template <typename T1, typename T2>
+void print_map (const map <T1, T2>& m )
+{
+  for(auto it = m.cbegin(); it != m.cend(); ++it)
+  {
+    std::cout << (char)it->first << " " << it->second << "\n";
+  }
+}
+
+template <typename T1, typename T2>
+void print_pair_vector (const vector <pair <T1, T2>> vp)
+{
+  for (const auto& p : vp)
+  {
+    cout << "(" << (char)p.first << ", " << p.second << ")\n";
+  }
+}
+
+template <typename T1>
+void print_binary_tree(const std::string& prefix, const T1* root, bool isLeft)
+{
+    if( root != nullptr )
+    {
+        std::cout << prefix;
+
+        std::cout << (isLeft ? "├──" : "└──" );
+
+        // print the value of the node
+        std::cout << root->item << std::endl;
+
+        // enter the next tree level - left and right branch
+        print_binary_tree ( prefix + (isLeft ? "│   " : "    "), root->left, true);
+        print_binary_tree ( prefix + (isLeft ? "│   " : "    "), root->right, false);
+    }
+}
+
+template <typename T1>
+void print_binary_tree (const T1* root)
+{
+    print_binary_tree ("", root, false);
+}
+
+
+class Hf_node
+{
+  public:
+    Hf_node
+      (size_t freq = 0
+       , char item = '0'
+       , Hf_node* left = nullptr
+       , Hf_node* right = nullptr)
+      : freq (freq), item (item),  left (left), right (right)
+    {}
+    // note: 以下三個的排序要與初始化列表的排序相同 zzz
+    size_t freq;
+    char item;
+    Hf_node* left, *right;
+
+    // 小的優先
+    bool operator() (const Hf_node* a, const Hf_node* b)
+    {
+      return a->freq > b->freq;
+    };
+};
+
+
+class Huffman_tree
+{
+  public:
+
+    Hf_node*
+      build_huffman_tree
+      (
+       std::priority_queue < Hf_node*
+       , std::vector <Hf_node*>
+       , Hf_node> min_heap
+      )
+      {
+        while (! (min_heap.size() == 1 ) )
+        {
+          auto left_node = min_heap.top(); min_heap.pop();
+          auto right_node = min_heap.top(); min_heap.pop();
+
+          if (left_node->freq > right_node->freq)
+          {
+            auto tmp = right_node;
+            right_node = left_node;
+            left_node = tmp;
+          }
+          Hf_node* top_node = new Hf_node (left_node->freq + right_node->freq, '\0', left_node, right_node);
+
+          min_heap.push (top_node);
+        }
+        return min_heap.top();
+      }
+
+    void
+      print_huffman
+      (
+       Hf_node* root
+       , vector <size_t> arr
+       , vector <pair <size_t, string>>* ret
+      )
+      {
+        // 題目要求，可移除
+        if (root->left)
+        {
+          // left add 0
+          arr.emplace_back ('0');
+          print_huffman (root->left, arr, ret);
+        }
+
+        if (root->right)
+        {
+          // right add 1
+          arr.emplace_back ('1');
+          print_huffman (root->right, arr, ret);
+        }
+
+        if (root->left == nullptr && root->right == nullptr)
+        {
+          // leaf
+          std::string str(arr.begin(), arr.end());
+          ret->push_back ({root->item, str});
+        }
+      }
+
+};
+
+int main()
+{
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  string str;
+  getline (cin, str);
+
+
+  // 小的在前
+  //auto cmp =  [](const Hf_node* a, const Hf_node* b)
+  //{
+  //return a->freq > b->freq;
+  //};
+
+  // <freq, item>
+  std::priority_queue < Hf_node*
+    , std::vector <Hf_node*>
+    , Hf_node> min_heap;
+
+  unordered_map <string::value_type, size_t> freq;
+  for (auto c : str)
+  {
+    freq[c]++;
+  }
+
+  for (const auto& [item, freq] : freq)
+  {
+    Hf_node* tmp = new Hf_node (freq, item);
+    min_heap.push(tmp);
+  }
+
+  Huffman_tree ht;
+  // calc huffman tree and return root
+  auto ht_root = ht.build_huffman_tree (min_heap);
+
+  //print_binary_tree (ht_root);
+
+
+  vector <size_t> arr;
+  vector <pair <size_t, string>>* ret = new vector <pair <size_t, string>>;
+  // get huffman code at `ret`
+  ht.print_huffman (ht_root, arr, ret);
+
+  print_pair_vector (*ret);
+
+}

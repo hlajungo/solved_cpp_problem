@@ -1,0 +1,12 @@
+rate - identifier
+R2D2 - identifier
+48 - number
+2 - number
+time - identifier
+555666 - number
+rate - identifier
+R2D2 - identifier
+48 - number
+2 - number
+time - identifier
+555666 - number

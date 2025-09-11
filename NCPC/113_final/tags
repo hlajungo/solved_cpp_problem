@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Add_max_st	st.cpp	/^  Add_max_st (auto&& n) : n (n), tree (4 * n, 0) {}$/;"	f	class:Add_max_st
+Add_max_st	st.cpp	/^  Add_max_st (std::vector<int>& v) : n (v.size () - 1), tree (4 * n, 0)$/;"	f	class:Add_max_st
+Add_max_st	st.cpp	/^class Add_max_st$/;"	c	file:
+Segment_tree	b.cpp	/^  Segment_tree (auto&& n) : n (n), tree (4 * n, 0) {}$/;"	f	class:Segment_tree
+Segment_tree	b.cpp	/^  Segment_tree (std::vector<int>& v)$/;"	f	class:Segment_tree
+Segment_tree	b.cpp	/^class Segment_tree$/;"	c	file:
+build	b.cpp	/^  build (std::vector<int>& v, int node, int l, int r)$/;"	f	class:Segment_tree
+build	st.cpp	/^  build (std::vector<int>& v, int node, int l, int r)$/;"	f	class:Add_max_st
+cout	st.cpp	/^  cout ()$/;"	f	class:Add_max_st
+is_include	st.cpp	/^  is_include (auto&& l1, auto&& r1, auto&& l2, auto&& r2)$/;"	f	class:Add_max_st	file:
+is_intersect	st.cpp	/^  is_intersect (auto&& l1, auto&& r1, auto&& l2, auto&& r2)$/;"	f	class:Add_max_st	file:
+lazy	st.cpp	/^  std::vector<int> lazy;$/;"	m	class:Add_max_st	file:
+left	st.cpp	/^  left (int node)$/;"	f	class:Add_max_st	file:
+main	b.cpp	/^main ()$/;"	f
+main	st.cpp	/^main ()$/;"	f
+n	b.cpp	/^  int n;$/;"	m	class:Segment_tree	file:
+n	st.cpp	/^  int n;$/;"	m	class:Add_max_st	file:
+query	b.cpp	/^  query (int l, int r)$/;"	f	class:Segment_tree
+query	b.cpp	/^  query (int ql, int qr, int node, int l, int r)$/;"	f	class:Segment_tree
+query	st.cpp	/^  query (auto&& ql, auto&& qr)$/;"	f	class:Add_max_st
+query	st.cpp	/^  query (int node, int l, int r, int ql, int qr)$/;"	f	class:Add_max_st	file:
+right	st.cpp	/^  right (int node)$/;"	f	class:Add_max_st	file:
+tree	b.cpp	/^  vector<int> tree;$/;"	m	class:Segment_tree	file:
+tree	st.cpp	/^  std::vector<int> tree;$/;"	m	class:Add_max_st	file:
+try_update_lazy	st.cpp	/^  try_update_lazy (int node, int l, int r)$/;"	f	class:Add_max_st	file:
+update	b.cpp	/^  update (int idx, int val)$/;"	f	class:Segment_tree
+update	b.cpp	/^  update (int idx, int val, int node, int l, int r)$/;"	f	class:Segment_tree
+update	st.cpp	/^  update (auto&& node, auto&& l, auto&& r, auto&& rl, auto&& rr, auto&& val)$/;"	f	class:Add_max_st	file:
+update	st.cpp	/^  update (auto&& rl, auto&& rr, auto&& val)$/;"	f	class:Add_max_st
